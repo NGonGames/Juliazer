@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @date Apr 17, 2013
+ * @author Ben Cochrane
  */
 package cc.ngon.julia;
 
-/**
- *
- * @author bcochrane
- */
+
 public class juliazer {
 
     /**

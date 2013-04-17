@@ -4,6 +4,10 @@
  */
 package cc.ngon.julia;
 
+/**
+ * Provides a simple interface for a 2-Dimensional X/Y Point
+ * @author Ben Cochrane
+ */
 public class Point {
     
     /**

@@ -4,6 +4,12 @@
  */
 package cc.ngon.julia;
 
+/**
+ * The View class provides an abstraction from the viewport of the Julia fractal
+ * rendering process. Additionally the View class provides utility methods for 
+ * display/viewport conversions. This class can be thought of as a basic 2D Camera.
+ * @author Ben Cochrane
+ */
 public class View {
 
     /**
