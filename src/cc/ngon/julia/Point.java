@@ -11,6 +11,14 @@ package cc.ngon.julia;
 public class Point {
     
     /**
+     * Default Constructor for the Point class, initializes X and Y to zero.
+     */
+    public Point() {
+        this.x = 0;
+        this.y = 0;
+    }
+    
+    /**
      * Constructs Point by simply setting fields.
      * @param x The X-Coordinate of the Point object.
      * @param y The Y-Coordinate of the Point object.
