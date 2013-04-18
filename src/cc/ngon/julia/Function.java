@@ -7,7 +7,7 @@ package cc.ngon.julia;
 
 /**
  * Represents the anonymous function (z^x + c -> z)
- * @author Ben
+ * @author Ben Cochrane
  */
 public class Function {
     
