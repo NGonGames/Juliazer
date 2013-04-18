@@ -10,7 +10,7 @@ package cc.ngon.julia;
  * display/viewport conversions. This class can be thought of as a basic 2D Camera.
  * @author Ben Cochrane
  */
-public class View {
+public class ImageView {
 
     /**
      * Initializes the View object semi-automatically.
@@ -18,7 +18,7 @@ public class View {
      * @param width Width of the Display the view represents.
      * @param height Height of the Display the view represents.
      */
-    public View(int width, int height) {
+    public ImageView(int width, int height) {
         this(width, height, -1, 1, -1, 1);
     }
     
@@ -31,7 +31,7 @@ public class View {
      * @param ystart The Y-Position on the Cartesian plane bound to the top of the display.
      * @param yend The Y-Position on the Cartesian plane bound to the bottom of the display.
      */
-    public View(int width, int height, double xstart, double xend, double ystart, double yend) {
+    public ImageView(int width, int height, double xstart, double xend, double ystart, double yend) {
         this.width = width;
         this.height = height;
         this.xStart = xstart;
@@ -46,7 +46,7 @@ public class View {
      * @param height New Height of the display being represented.
      * @return Returns this
      */
-    public View resizeDisplay(int width, int height) {
+    public ImageView resizeDisplay(int width, int height) {
         this.width = width;
         this.height = height;
         return this;
@@ -60,7 +60,7 @@ public class View {
      * @param yend The Y-Position on the Cartesian plane bound to the bottom of the display.
      * @return Returns this
      */
-    public View resizeViewport(int xstart, int xend, int ystart, int yend) {
+    public ImageView resizeViewport(int xstart, int xend, int ystart, int yend) {
         this.xStart = xstart;
         this.xEnd = xend;
         this.yStart = ystart;
@@ -78,7 +78,7 @@ public class View {
      * @param yend The Y-Position on the Cartesian plane bound to the bottom of the display.
      * @return 
      */
-    public View resize(int width, int height, int xstart, int xend, int ystart, int yend) {
+    public ImageView resize(int width, int height, int xstart, int xend, int ystart, int yend) {
         return resizeDisplay(width, height).resizeViewport(xstart, xend, ystart, yend);
     }
     
