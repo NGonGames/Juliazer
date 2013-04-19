@@ -7,7 +7,6 @@ package cc.ngon.julia;
 
 /**
  * 
- * @author Ben Cochrane
  */
 public class EvaluationController {
 
