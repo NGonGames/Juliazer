@@ -52,13 +52,29 @@ public class Function {
         }
         return i == mThreshold ? -1 : i;
     }
+    
+    /**
+     * Get the threshold for iterations before assuming a point is in the set.
+     * @return Returns maximum number of iterations.
+     */
+    public int iterations() {
+        return mThreshold;
+    }
+    
+    /**
+     * Get the threshold for iterations before assuming a point is in the set.
+     * @param iterations The maximum number of iterations.
+     */
+    public void setIterations(int iterations) {
+        mThreshold = iterations;
+    }
 
     /**
      * Which power to raise z to in the function (z^x + c -> z)
      */ protected double mPower;
     /**
      * The number of times to evaluate the function (z^x + c -> z)
-     */ protected double mThreshold;
+     */ protected int mThreshold;
     /**
      * The escape radius of a given point.
      */ private final double radius = 2.0;

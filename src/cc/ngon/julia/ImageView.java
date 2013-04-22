@@ -37,6 +37,8 @@ public class ImageView {
         this.xEnd = xend;
         this.yStart = ystart;
         this.yEnd = yend;
+        
+        this.mImage = new float[3 * width * height];
     }
     
     /**
@@ -48,6 +50,7 @@ public class ImageView {
     public ImageView resizeDisplay(int width, int height) {
         this.width = width;
         this.height = height;
+        this.mImage = new float[3 * width * height];
         return this;
     }
     
@@ -59,7 +62,7 @@ public class ImageView {
      * @param yend The Y-Position on the Cartesian plane bound to the bottom of the display.
      * @return Returns this
      */
-    public ImageView resizeViewport(int xstart, int xend, int ystart, int yend) {
+    public ImageView resizeViewport(double xstart, double xend, double ystart, double yend) {
         this.xStart = xstart;
         this.xEnd = xend;
         this.yStart = ystart;
@@ -77,30 +80,40 @@ public class ImageView {
      * @param yend The Y-Position on the Cartesian plane bound to the bottom of the display.
      * @return 
      */
-    public ImageView resize(int width, int height, int xstart, int xend, int ystart, int yend) {
+    public ImageView resize(int width, int height, double xstart, double xend, double ystart, double yend) {
         return resizeDisplay(width, height).resizeViewport(xstart, xend, ystart, yend);
     }
     
     /**
      * Converts a display coordinate to a viewport coordinate.
-     * @param coord The display coordinate to be converted.
+     * @param c The display coordinate to be converted.
      * @return Complex containing the X/Y of the viewport coordinate corresponding
      *  to coord.
      */
-    public Complex convertDisplayToViewport(Complex coord) {
-        return new Complex(xStart + (coord.a / width) * (xEnd - xStart),
-                yStart + (coord.b / height) * (yEnd - yStart));
+    public Complex convertDisplayToViewport(Complex c) {
+        return new Complex(xStart + (c.a / width) * (xEnd - xStart),
+                yStart + (c.b / height) * (yEnd - yStart));
     }
     
     /**
      * Converts a viewport coordinate to a display coordinate.
-     * @param coord The viewport coordinate to be converted.
+     * @param c The viewport coordinate to be converted.
      * @return Complex containing the X/Y of the display coordinate corresponding
      *  to coord.
      */
-    public Complex convertViewportToDisplay(Complex coord) {
-        return new Complex(((coord.a - xStart) / (xEnd - xStart)) * width,
-                ((coord.b - yStart) / (yEnd - yStart)) * height);
+    public Complex convertViewportToDisplay(Complex c) {
+        return new Complex(((c.a - xStart) / (xEnd - xStart)) * width,
+                ((c.b - yStart) / (yEnd - yStart)) * height);
+    }
+    
+    /**
+     * Sets a pixel value in the image array based on the current gradient.
+     * @param c The x/y coordinate pair in display coordinates.
+     * @param iterations The number of iterations currently used.
+     */
+    public void setPointIteration(Complex c, int iterations) {
+        int n = (int)(c.a + width * c.b);
+        float r = mImage[n];
     }
     
     /**
@@ -122,5 +135,9 @@ public class ImageView {
     /**
      * The cached height of the display.
      */ protected double height;
+    
+    /**
+     * An RGB format array to represent the screen image.
+     */ protected float[] mImage;
     
 }

@@ -11,7 +11,7 @@ package cc.ngon.julia;
 public class EvaluationController {
 
     public EvaluationController() {
-        
+        f = new Function(32);
     }
     
     protected Function f;
