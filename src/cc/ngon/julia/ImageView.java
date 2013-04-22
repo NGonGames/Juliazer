@@ -84,23 +84,23 @@ public class ImageView {
     /**
      * Converts a display coordinate to a viewport coordinate.
      * @param coord The display coordinate to be converted.
-     * @return Point containing the X/Y of the viewport coordinate corresponding
+     * @return Complex containing the X/Y of the viewport coordinate corresponding
      *  to coord.
      */
-    public Point convertDisplayToViewport(Point coord) {
-        return new Point(xStart + (coord.x / width) * (xEnd - xStart),
-                yStart + (coord.y / height) * (yEnd - yStart));
+    public Complex convertDisplayToViewport(Complex coord) {
+        return new Complex(xStart + (coord.a / width) * (xEnd - xStart),
+                yStart + (coord.b / height) * (yEnd - yStart));
     }
     
     /**
      * Converts a viewport coordinate to a display coordinate.
      * @param coord The viewport coordinate to be converted.
-     * @return Point containing the X/Y of the display coordinate corresponding
+     * @return Complex containing the X/Y of the display coordinate corresponding
      *  to coord.
      */
-    public Point convertViewportToDisplay(Point coord) {
-        return new Point(((coord.x - xStart) / (xEnd - xStart)) * width,
-                ((coord.y - yStart) / (yEnd - yStart)) * height);
+    public Complex convertViewportToDisplay(Complex coord) {
+        return new Complex(((coord.a - xStart) / (xEnd - xStart)) * width,
+                ((coord.b - yStart) / (yEnd - yStart)) * height);
     }
     
     /**
