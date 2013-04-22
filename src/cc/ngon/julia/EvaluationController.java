@@ -15,5 +15,6 @@ public class EvaluationController {
     }
     
     protected Function f;
+    protected ImageView mImage;
     
 }
