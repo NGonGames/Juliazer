@@ -44,21 +44,13 @@ public class Function {
      * @param constant The constant value of the function (z^x + c -> z)
      * @return Returns the number of iterations required for z to exceed 2
      */
-    public int eval(double initial, double constant) {
-        iterationCount = 0;
-        evalImpl(initial, constant);
-        return -1;
-    }
-    
-    /**
-     * Implementation of the Function evaluation.
-     */
-    private void evalImpl(double z, double constant) {
-        ++iterationCount;
-        double zn = Math.pow(z, mPower) + constant;
-        if (zn < 2 && iterationCount < mThreshold) {
-            evalImpl(zn, constant);
+    public int eval(Complex z, Complex c) {
+        int i = 0;
+        while (i < mThreshold && z.magnitude() < radius) {
+            z = z.product(z).sum(c);
+            ++i;
         }
+        return i == mThreshold ? -1 : i;
     }
 
     /**
@@ -67,9 +59,8 @@ public class Function {
     /**
      * The number of times to evaluate the function (z^x + c -> z)
      */ protected double mThreshold;
-     
     /**
-      * A field for tracking the number of iterations while evaluating function.
-      */ private int iterationCount;
+     * The escape radius of a given point.
+     */ private final double radius = 2.0;
 
 }
